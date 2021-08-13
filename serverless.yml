@@ -1,4 +1,4 @@
-service: hello-serverless
+service: cesar-serverless
 
 provider:
   name: aws
