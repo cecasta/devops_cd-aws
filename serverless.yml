@@ -1,4 +1,4 @@
-service: cesar-serverless
+service: cesar-casta-serverless
 
 provider:
   name: aws
