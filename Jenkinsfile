@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    tools {nodejs "nodejs"}
     stages {
         stage ('Build sin test') {
             steps {
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
                     sh 'npm run test:coverage && cp coverage/lcov.info lcov.info || echo "Code coverage failed"'
-                    archiveArtifacts (artifacts: 'coverage/**', fingerprint: true) 
+                    archiveArtifacts (artifacts: 'coverage/**', onlyIfSuccessful: true) 
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
         stage ('deploy') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
-                    withAWS(credentials: 'aws-credentials2'){
+                    withAWS(credentials: 'aws-credentials'){
                         sh 'serverless deploy'
                     }
                 }
