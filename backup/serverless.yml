@@ -1,4 +1,4 @@
-service: cesar-casta-serverless
+service: hello-serverless-cajecasu
 
 provider:
   name: aws
@@ -48,7 +48,7 @@ resources:
         KeySchema:
             - AttributeName: "itemID"
               KeyType: "HASH"
-        TableName: "Market"
+        TableName: "MarketCajecasu"
 
 plugins:
   - serverless-offline
